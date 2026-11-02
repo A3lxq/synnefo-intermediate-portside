@@ -5,3 +5,6 @@ vm/dist/
 vm/disks/
 vm/images/
 vm/seed/
+organizer/release-secret.txt
+vm/keys/
+vm/logs/
