@@ -1,0 +1,21 @@
+services:
+  portside:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: halcyon-intermediate-portside
+    environment:
+      - CTF_SECRET=${CTF_SECRET}
+    ports:
+      - "8003:5000"
+      # Port 5001 (internal diagnostics API) is intentionally NOT
+      # published -- it's an SSRF target, reachable only from inside
+      # the container via the app's own /preview endpoint.
+    networks:
+      - portside-net
+    # Deliberately vulnerable teaching target: do not expose beyond an
+    # isolated lab network / NAT'd host-only interface.
+
+networks:
+  portside-net:
+    driver: bridge
