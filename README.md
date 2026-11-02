@@ -17,26 +17,11 @@ steeply, and several later flags depend on earlier ones.
 **This machine is intentionally vulnerable. Run it only on an isolated
 network.**
 
-## Requirements
+## Status
 
-- Docker + Docker Compose
-- A player machine with: `curl`, Burp Suite Community (or equivalent),
-  `jwt_tool` or CyberChef (JWT decode/crack), Wireshark or `tshark`,
-  Python 3 with `pyjwt` (handy for scripting the later steps)
-
-## Starting the box
-
-```
-./start.sh
-```
-Generates a fresh `.env` with a random per-deployment secret and brings the
-stack up.
-
-- Web: http://localhost:8003
-
-Note: this app also runs a second, internal-only API on port 5001 that is
-**never published** by `docker-compose.yml` — that's intentional, and part
-of the challenge (see flag 6).
+This box ships as a VM appliance (OVA) — see the `vm/` directory once it's
+built. There is no Docker build in this repo (an earlier Docker build was
+removed; a Docker version may be added back separately).
 
 ## Flag format
 
@@ -55,3 +40,4 @@ of the challenge (see flag 6).
 - [`docs/hints.md`](docs/hints.md) — progressive hints
 - [`docs/tools.md`](docs/tools.md) — what each tool is for
 - [`docs/writeup/WRITEUP.md`](docs/writeup/WRITEUP.md) — full spoiler walkthrough
+- [`flags/generate_flags.py`](flags/generate_flags.py) — the per-deployment flag derivation scheme, used by `organizer/verify.py`
